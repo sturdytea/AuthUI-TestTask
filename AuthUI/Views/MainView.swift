@@ -39,6 +39,7 @@ class MainView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = PrimaryActionButton()
+        button.isEnabled = true 
         button.setTitle("Войти по номеру телефона", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

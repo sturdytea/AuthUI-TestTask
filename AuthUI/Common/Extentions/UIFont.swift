@@ -26,4 +26,8 @@ extension UIFont {
     static let actionButtonFont = UIFont(name: "\(urbanist)\(Style.regular.rawValue)", size: 16)
     
     static let hintFont = UIFont(name: "\(urbanist)\(Style.medium.rawValue)", size: 14)
+    static let navigationBarTitleFont = UIFont(name: "\(urbanist)\(Style.medium.rawValue)", size: 20)
+    static let textFieldHintFont = UIFont(name: "\(urbanist)\(Style.regular.rawValue)", size: 13)
+    static let textFieldInputFont = UIFont(name: "\(inter18)\(Style.medium.rawValue)", size: 19)
+    static let verificationCodeInputFont = UIFont(name: "\(inter18)\(Style.medium.rawValue)", size: 22)
 }

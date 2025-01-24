@@ -11,6 +11,27 @@
 
 import Foundation
 
-class PhoneNumberInputViewModel {
+class PhoneNumberInputViewModel: ViewModel {
     var coordinator: AppCoordinator?
+    
+    var phoneNumber: String = "" {
+        didSet {
+            validatePhoneNumber()
+        }
+    }
+    
+    var onButtonStateChange: ((Bool) -> Void)?
+    
+    func navigateBack() {
+        coordinator?.goBack()
+    }
+    
+    func navigateToVerification() {
+        coordinator?.goToVerificationPage()
+    }
+    
+    private func validatePhoneNumber() {
+        let isValid = phoneNumber.filter { $0.isNumber }.count >= 9
+        onButtonStateChange?(isValid)
+    }
 }

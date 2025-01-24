@@ -33,16 +33,28 @@ class PrimaryActionButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor.gradientStart.cgColor,
-                                UIColor.gradientSecond.cgColor,
-                                UIColor.gradientThird.cgColor,
-                                UIColor.gradientFourth.cgColor,
-                                UIColor.gradientEnd.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         layer.insertSublayer(gradientLayer, at: 0)
         layer.borderColor = .none
         layer.cornerRadius = bounds.height / 2
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            if self.isEnabled == false {
+                gradientLayer.colors = [UIColor.disabledStart.cgColor,
+                                        UIColor.disabledEnd.cgColor]
+
+            } else {
+                gradientLayer.colors = [UIColor.gradientStart.cgColor,
+                                        UIColor.gradientSecond.cgColor,
+                                        UIColor.gradientThird.cgColor,
+                                        UIColor.gradientFourth.cgColor,
+                                        UIColor.gradientEnd.cgColor]
+
+            }
+        }
     }
     
     override var intrinsicContentSize: CGSize {

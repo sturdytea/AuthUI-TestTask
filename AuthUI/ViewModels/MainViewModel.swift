@@ -11,7 +11,7 @@
 
 import Foundation
 
-class MainViewModel {
+class MainViewModel: ViewModel {
     var coordinator: AppCoordinator?
     
     func navigateToLogin() {
