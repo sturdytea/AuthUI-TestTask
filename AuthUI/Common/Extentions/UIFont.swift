@@ -1,0 +1,29 @@
+//
+//
+// UIFont.swift
+// AuthUI
+//
+// Created by sturdytea on 23.01.2025.
+//
+// GitHub: https://github.com/sturdytea
+//
+    
+
+import UIKit
+
+extension UIFont {
+    private static let inter18 = "Inter_18pt"
+    private static let inter24 = "Inter_24pt"
+    private static let poppins = "Poppins"
+    private static let urbanist = "Urbanist"
+    
+    private enum Style: String {
+        case light = "-Light"
+        case medium = "-Medium"
+        case regular = "-Regular"
+    }
+    
+    static let actionButtonFont = UIFont(name: "\(urbanist)\(Style.regular.rawValue)", size: 16)
+    
+    static let hintFont = UIFont(name: "\(urbanist)\(Style.medium.rawValue)", size: 14)
+}
