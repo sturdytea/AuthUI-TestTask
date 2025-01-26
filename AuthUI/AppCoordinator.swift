@@ -63,6 +63,14 @@ class AppCoordinator: Coordinator {
         print("    >>> Validation Screen")
     }
     
+    func goToPinCodeInputPage() {
+        
+    }
+    
+    func goToNoCodePage() {
+        
+    }
+    
     func goBack() {
         navigationController.popViewController(animated: true)
         print("  < Back")

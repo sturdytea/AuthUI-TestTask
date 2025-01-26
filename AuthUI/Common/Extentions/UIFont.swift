@@ -30,4 +30,9 @@ extension UIFont {
     static let textFieldHintFont = UIFont(name: "\(urbanist)\(Style.regular.rawValue)", size: 13)
     static let textFieldInputFont = UIFont(name: "\(inter18)\(Style.medium.rawValue)", size: 19)
     static let verificationCodeInputFont = UIFont(name: "\(inter18)\(Style.medium.rawValue)", size: 22)
+    static let verificationTitleFont = UIFont(name: "\(inter18)\(Style.medium.rawValue)", size: 24)
+    static let verificationInstructionFont = UIFont(name: "\(inter18)\(Style.light.rawValue)", size: 16)
+    static let timerFont = UIFont(name: "\(inter18)\(Style.regular.rawValue)", size: 16)
+    
+    
 }

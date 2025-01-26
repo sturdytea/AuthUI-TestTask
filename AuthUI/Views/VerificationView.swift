@@ -12,26 +12,61 @@
 import UIKit
 
 class VerificationView: UIView {
-    
     private lazy var title: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 1
+        label.font = .verificationTitleFont
+        label.text = "Верификация"
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var instruction: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .verificationInstructionFont
+        label.text = "Введите код из смс,\nчто мы отправили вам"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var timer: UILabel = {
+    lazy var timerLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .timerFont
+        label.textAlignment = .center
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-//    private lazy var
-
+    lazy var verificationCodeView: VerificationCodeView = {
+        let view = VerificationCodeView()
+        view.parentView = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private(set) lazy var loginButton: UIButton = {
+        let button = PrimaryActionButton()
+        button.isEnabled = false
+        button.setTitle("Зарегестрироваться", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private(set) lazy var noCodeButton: UIButton = {
+        let button = CustomPlainButton("Я не получил код!")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .black
         setupView()
         setupConstraints()
     }
@@ -41,58 +76,38 @@ class VerificationView: UIView {
     }
     
     private func setupView() {
-        
+        addSubview(title)
+        addSubview(instruction)
+        addSubview(timerLabel)
+        addSubview(verificationCodeView)
+        addSubview(loginButton)
+        addSubview(noCodeButton)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: 168),
+            
+            instruction.centerXAnchor.constraint(equalTo: centerXAnchor),
+            instruction.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
+            
+            timerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            timerLabel.topAnchor.constraint(equalTo: instruction.bottomAnchor, constant: 32),
+            
+            verificationCodeView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            verificationCodeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            verificationCodeView.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 32),
+            verificationCodeView.heightAnchor.constraint(equalToConstant: 46),
+            
+            loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: verificationCodeView.bottomAnchor, constant: 32),
+            loginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            
+            noCodeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            noCodeButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 32)
             
         ])
     }
 }
-
-// MARK: - CodeTextField
-private class CodeTextField: PaddedTextField {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configure() {
-        backgroundColor = .none
-        borderStyle = .line
-        keyboardType = .numberPad
-        layer.cornerRadius = 10
-        layer.masksToBounds = true
-        textAlignment = .center
-        textColor = .white
-        font = .textFieldInputFont
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-        gradientLayer.colors = [
-            UIColor.gradientStart.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor,
-            UIColor.gradientFourth.cgColor,
-            UIColor.gradientEnd.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = UIBezierPath(roundedRect: gradientLayer.bounds, cornerRadius: 10).cgPath
-        shapeLayer.lineWidth = 2
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        
-        gradientLayer.mask = shapeLayer
-        layer.addSublayer(gradientLayer)
-    }
-}
-
