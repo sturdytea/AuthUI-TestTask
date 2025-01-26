@@ -27,7 +27,7 @@ class PrimaryActionButton: UIButton {
     private func setupView() {
         tintColor = .white
         clipsToBounds = true
-        titleLabel?.font = .actionButtonFont
+        titleLabel?.font = .urbanistRegularFont(ofSize: 16)
     }
     
     override func layoutSubviews() {

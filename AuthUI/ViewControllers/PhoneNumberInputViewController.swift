@@ -43,7 +43,7 @@ class PhoneNumberInputViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.text = titleText
         titleLabel.textColor = .white
-        titleLabel.font = .navigationBarTitleFont
+        titleLabel.font = .urbanistMediumFont(ofSize: 20)
         navigationItem.leftBarButtonItem = backButtonItem
         navigationItem.titleView = titleLabel
     }

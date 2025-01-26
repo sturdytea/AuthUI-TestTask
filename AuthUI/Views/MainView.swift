@@ -47,7 +47,7 @@ class MainView: UIView {
     
     private lazy var newUserHint: UILabel = {
         let label = UILabel()
-        label.font = .hintFont
+        label.font = .urbanistMediumFont(ofSize: 14)
         label.text = "У вас нет аккаунта?"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

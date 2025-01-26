@@ -33,7 +33,7 @@ class CodeTextField: PaddedTextField {
         textAlignment = .center
         textColor = .white
         tintColor = .clear
-        font = .textFieldInputFont
+        font = .interMediumFont(ofSize: 22)
         translatesAutoresizingMaskIntoConstraints = false
         
         let gradientLayer = CAGradientLayer()

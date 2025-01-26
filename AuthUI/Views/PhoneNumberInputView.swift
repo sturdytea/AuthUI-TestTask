@@ -14,7 +14,7 @@ import UIKit
 class PhoneNumberInputView: UIView {
     private lazy var title: UILabel = {
         let label = UILabel()
-        label.font = .textFieldHintFont
+        label.font = .urbanistRegularFont(ofSize: 13)
         label.text = "Номер телефона"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -31,7 +31,7 @@ class PhoneNumberInputView: UIView {
         textField.backgroundColor = .none
         textField.textColor = .white
         textField.textAlignment = .center
-        textField.font = .textFieldInputFont
+        textField.font = .interMediumFont(ofSize: 19)
         textField.layer.cornerRadius = 10
         textField.layer.masksToBounds = true
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class PhoneNumberInputView: UIView {
         textField.layer.masksToBounds = true
         textField.textAlignment = .left
         textField.textColor = .white
-        textField.font = .textFieldInputFont
+        textField.font = .interMediumFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         let gradientLayer = CAGradientLayer()
@@ -98,7 +98,7 @@ class PhoneNumberInputView: UIView {
     
     private lazy var hint: UILabel = {
         let label = UILabel()
-        label.font = .hintFont
+        label.font = .urbanistMediumFont(ofSize: 13)
         label.text = "Код придет на ваш номер телефона"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

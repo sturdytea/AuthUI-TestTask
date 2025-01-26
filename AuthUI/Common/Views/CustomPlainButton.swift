@@ -23,7 +23,7 @@ class CustomPlainButton: UIButton {
     }
     
     private func setupView(_ text: String) {
-        titleLabel?.font = .hintFont
+        titleLabel?.font = .urbanistMediumFont(ofSize: 14)
         titleLabel?.textColor = .systemBlue
         titleLabel?.textAlignment = .center
         

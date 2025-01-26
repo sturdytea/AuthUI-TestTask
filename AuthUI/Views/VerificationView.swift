@@ -15,7 +15,7 @@ class VerificationView: UIView {
     private lazy var title: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = .verificationTitleFont
+        label.font = .interMediumFont(ofSize: 24)
         label.text = "Верификация"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class VerificationView: UIView {
     private lazy var instruction: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = .verificationInstructionFont
+        label.font = .interLightFont(ofSize: 16)
         label.text = "Введите код из смс,\nчто мы отправили вам"
         label.textAlignment = .center
         label.textColor = .gray
@@ -36,7 +36,7 @@ class VerificationView: UIView {
     lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = .timerFont
+        label.font = .interRegularFont(ofSize: 16)
         label.textAlignment = .center
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
