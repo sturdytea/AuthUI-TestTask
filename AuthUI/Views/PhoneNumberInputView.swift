@@ -111,6 +111,18 @@ class PhoneNumberInputView: UIView {
         return button
     }()
     
+    // Keyboard toolbar
+    private lazy var toolbar: UIToolbar = {
+        let toolbar = UIToolbar()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.items = [flexSpace, flexSpace, doneButton]
+        toolbar.sizeToFit()
+        phoneNumberTextField.inputAccessoryView = toolbar
+        return toolbar
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
@@ -122,18 +134,24 @@ class PhoneNumberInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func dismissKeyboard() {
+        self.endEditing(true)
+    }
+    
     private func setupView() {
         addSubview(title)
         addSubview(countryCodeTextField)
         addSubview(phoneNumberTextField)
         addSubview(hint)
         addSubview(button)
+        addSubview(toolbar)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             title.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 32),
-            title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 64),
             
             countryCodeTextField.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             countryCodeTextField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
