@@ -36,17 +36,9 @@ class PhoneNumberInputView: UIView {
         textField.layer.masksToBounds = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 70, height: 50)
-        gradientLayer.colors = [
-            UIColor.gradientStart.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor,
-            UIColor.gradientFourth.cgColor,
-            UIColor.gradientEnd.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        let frame = CGRect(x: 0, y: 0, width: 70, height: 50)
+        
+        let gradientLayer = GradientUtility.createReversedGradient(frame: frame)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = UIBezierPath(roundedRect: gradientLayer.bounds, cornerRadius: 10).cgPath
@@ -73,17 +65,8 @@ class PhoneNumberInputView: UIView {
         textField.font = .interMediumFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 150, height: 50)
-        gradientLayer.colors = [
-            UIColor.gradientStart.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor,
-            UIColor.gradientFourth.cgColor,
-            UIColor.gradientEnd.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 150, height: 50)
+        let gradientLayer = GradientUtility.createReversedGradient(frame: frame)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = UIBezierPath(roundedRect: gradientLayer.bounds, cornerRadius: 10).cgPath

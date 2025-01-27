@@ -90,11 +90,7 @@ class PinCodeInputField: UIView {
     func updateDots(filledCount: Int) {
         for (index, dot) in pinCodeIndicators.enumerated() {
             if index < filledCount {
-                dot.gradientLayer.colors = [UIColor.gradientStart.cgColor,
-                                            UIColor.gradientSecond.cgColor,
-                                            UIColor.gradientThird.cgColor,
-                                            UIColor.gradientFourth.cgColor,
-                                            UIColor.gradientEnd.cgColor]
+                dot.gradientLayer.colors = GradientUtility.colors
             } else {
                 dot.gradientLayer.colors = [UIColor.gray.cgColor]
             }
@@ -102,13 +98,7 @@ class PinCodeInputField: UIView {
     }
     
     func pinCodeComplete(pin: String) {
-        background.gradientLayer.colors = [
-            UIColor.gradientStart.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor,
-            UIColor.gradientFourth.cgColor,
-            UIColor.gradientEnd.cgColor
-        ]
+        background.gradientLayer.colors = GradientUtility.colors
         print("Entered PIN: \(pin)")
     }
 }
@@ -136,8 +126,8 @@ class Dot: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         layer.insertSublayer(gradientLayer, at: 0)
         layer.borderColor = .none
         layer.cornerRadius = frame.size.width / 2
@@ -180,8 +170,8 @@ class Background: UIView {
         
         gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         gradientLayer.colors = [UIColor.modalBackground.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = UIBezierPath(roundedRect: gradientLayer.bounds, cornerRadius: frame.height / 2).cgPath

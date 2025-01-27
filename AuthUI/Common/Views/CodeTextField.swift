@@ -36,17 +36,9 @@ class CodeTextField: PaddedTextField {
         font = .interMediumFont(ofSize: 22)
         translatesAutoresizingMaskIntoConstraints = false
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-        gradientLayer.colors = [
-            UIColor.gradientStart.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor,
-            UIColor.gradientFourth.cgColor,
-            UIColor.gradientEnd.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        let frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        
+        let gradientLayer = GradientUtility.createGradient(frame: frame)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = UIBezierPath(roundedRect: gradientLayer.bounds, cornerRadius: 4).cgPath
