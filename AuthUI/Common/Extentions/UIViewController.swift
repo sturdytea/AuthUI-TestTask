@@ -13,18 +13,20 @@ import UIKit
 
 extension UIViewController {
     func showAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Access code is 777777", preferredStyle: .alert)
-        let approveAlertAction = UIAlertAction(title: "OK", style: .default)
-        
-        alertController.addAction(approveAlertAction)
-        present(alertController, animated: true)
+        let alertViewController = CustomAlertViewController()
+        alertViewController.alertWindow.message.text = "Access code is 777777"
+        alertViewController.alertWindow.button.setTitle("OK", for: .normal)
+        alertViewController.modalPresentationStyle = UIModalPresentationStyle.custom
+        alertViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        present(alertViewController, animated: true)
     }
     
     func showPinCodeInputSuccessAlert() {
-        let alertController = UIAlertController(title: "", message: "Вы успешно создали код приложения", preferredStyle: .alert)
-        let continueAlertAction = UIAlertAction(title: "Войти в приложние", style: .default)
-        
-        alertController.addAction(continueAlertAction)
-        present(alertController, animated: true)
+        let alertViewController = CustomAlertViewController()
+        alertViewController.alertWindow.message.text = "Вы успешно создали код\nприложения"
+        alertViewController.alertWindow.button.setTitle("Войти в приложние", for: .normal)
+        alertViewController.modalPresentationStyle = UIModalPresentationStyle.custom
+        alertViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        present(alertViewController, animated: true)
     }
 }

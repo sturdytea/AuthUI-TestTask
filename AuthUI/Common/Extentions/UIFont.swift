@@ -49,4 +49,8 @@ extension UIFont {
     static func interRegularFont(ofSize fontSize: CGFloat) -> UIFont {
         UIFont(name: "\(Font.inter18)\(Style.regular)", size: fontSize) ?? .systemFont(ofSize: fontSize)
     }
+    
+    static func poppinsMediumFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.poppins)\(Style.medium)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
 }
