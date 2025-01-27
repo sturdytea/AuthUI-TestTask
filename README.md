@@ -3,7 +3,7 @@
   <h1>AuthUI-TestTask</h1>
 </div>
 
-AR Furniture is an augmented reality (AR) app that lets users visualize 3D furniture models in their space. Designed to simplify the process of choosing furniture, the app provides an interactive and immersive shopping experience.
+UI-составляющая для авторизации на портале SIS. 
 
 ## Функционал 
 - __Регистрация__: Пользователь вводит свой номер телефона для авторизации. 
