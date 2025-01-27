@@ -12,10 +12,13 @@
 import UIKit
 
 extension UIFont {
-    private static let inter18 = "Inter_18pt"
-    private static let inter24 = "Inter_24pt"
-    private static let poppins = "Poppins"
-    private static let urbanist = "Urbanist"
+    
+    private enum Font: String {
+        case inter18 = "Inter_18pt"
+        case inter24 = "Inter_24pt"
+        case poppins = "Poppins"
+        case urbanist = "Urbanist"
+    }
     
     private enum Style: String {
         case light = "-Light"
@@ -23,7 +26,31 @@ extension UIFont {
         case regular = "-Regular"
     }
     
-    static let actionButtonFont = UIFont(name: "\(urbanist)\(Style.regular.rawValue)", size: 16)
+    static func urbanistLightFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.urbanist)\(Style.light)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
     
-    static let hintFont = UIFont(name: "\(urbanist)\(Style.medium.rawValue)", size: 14)
+    static func urbanistMediumFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.urbanist)\(Style.medium)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
+    
+    static func urbanistRegularFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.urbanist)\(Style.regular)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
+    
+    static func interLightFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.inter18)\(Style.light)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
+    
+    static func interMediumFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.inter18)\(Style.medium)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
+    
+    static func interRegularFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.inter18)\(Style.regular)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
+    
+    static func poppinsMediumFont(ofSize fontSize: CGFloat) -> UIFont {
+        UIFont(name: "\(Font.poppins)\(Style.medium)", size: fontSize) ?? .systemFont(ofSize: fontSize)
+    }
 }

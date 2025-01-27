@@ -27,22 +27,29 @@ class PrimaryActionButton: UIButton {
     private func setupView() {
         tintColor = .white
         clipsToBounds = true
-        titleLabel?.font = .actionButtonFont
+        titleLabel?.font = .urbanistRegularFont(ofSize: 16)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor.gradientStart.cgColor,
-                                UIColor.gradientSecond.cgColor,
-                                UIColor.gradientThird.cgColor,
-                                UIColor.gradientFourth.cgColor,
-                                UIColor.gradientEnd.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         layer.insertSublayer(gradientLayer, at: 0)
         layer.borderColor = .none
         layer.cornerRadius = bounds.height / 2
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            if self.isEnabled == false {
+                gradientLayer.colors = GradientUtility.disabledColors
+
+            } else {
+                gradientLayer.colors = GradientUtility.colors
+
+            }
+        }
     }
     
     override var intrinsicContentSize: CGSize {

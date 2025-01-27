@@ -39,6 +39,7 @@ class AppCoordinator: Coordinator {
         let viewModel = PhoneNumberInputViewModel()
         viewModel.coordinator = self
         viewController.viewModel = viewModel
+        viewController.navigationBarTitleText = "Войти"
         navigationController.pushViewController(viewController, animated: true)
         print("  >> Login Screen")
     }
@@ -48,7 +49,40 @@ class AppCoordinator: Coordinator {
         let viewModel = PhoneNumberInputViewModel()
         viewModel.coordinator = self
         viewController.viewModel = viewModel
+        viewController.navigationBarTitleText = "Зарегистрироваться"
         navigationController.pushViewController(viewController, animated: true)
         print("  >> Registration Screen")
+    }
+    
+    func goToVerificationPage() {
+        let viewController = VerificationViewController()
+        let viewModel = VerificationViewModel()
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+        print("    >>> Validation Screen")
+    }
+    
+    func goToPinCodeInputPage() {
+        let viewController = PinCodeInputViewController()
+        let viewModel = PinCodeInputViewModel()
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+        print("        >>>>> Pin-code Input Screen")
+    }
+    
+    func goToNoCodePage() {
+        let viewController = NoCodeViewController()
+        let viewModel = NoCodeViewModel()
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+        print("      >>>> No-code Screen")
+    }
+    
+    func goBack() {
+        navigationController.popViewController(animated: true)
+        print("  < Back")
     }
 }

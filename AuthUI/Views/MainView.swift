@@ -39,6 +39,7 @@ class MainView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = PrimaryActionButton()
+        button.isEnabled = true 
         button.setTitle("Войти по номеру телефона", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -46,7 +47,7 @@ class MainView: UIView {
     
     private lazy var newUserHint: UILabel = {
         let label = UILabel()
-        label.font = .hintFont
+        label.font = .urbanistMediumFont(ofSize: 14)
         label.text = "У вас нет аккаунта?"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
