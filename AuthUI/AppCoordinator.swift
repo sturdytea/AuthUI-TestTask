@@ -64,11 +64,21 @@ class AppCoordinator: Coordinator {
     }
     
     func goToPinCodeInputPage() {
-        
+        let viewController = PinCodeInputViewController()
+        let viewModel = PinCodeInputViewModel()
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+        print("        >>>>> Pin-code Input Screen")
     }
     
     func goToNoCodePage() {
-        
+        let viewController = NoCodeViewController()
+        let viewModel = NoCodeViewModel()
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+        print("      >>>> No-code Screen")
     }
     
     func goBack() {
